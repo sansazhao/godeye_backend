@@ -1,0 +1,10 @@
+language: java
+services:
+- docker
+
+install:
+- docker build -t godeye_backend .
+- docker run -d -p 127.0.0.1:80:80 --name godeye_backend godeye_backend
+
+script:
+- docker ps | grep -q godeye_backend
