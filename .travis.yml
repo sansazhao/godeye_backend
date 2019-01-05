@@ -4,6 +4,7 @@ services:
 - docker
 
 before_install:
+- chmod +x mvnw
 - docker build -t godeye_backend .
 - docker run -d -p 8080:8080 godeye_backend
 - docker ps -a
