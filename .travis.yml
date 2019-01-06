@@ -5,6 +5,7 @@ services:
 
 before_install:
 - chmod +x mvnw
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_NAME" --password-stdin
 - docker build -t godeye_backend .
 - docker run -d -p 8080:8080 godeye_backend
 - docker ps -a
