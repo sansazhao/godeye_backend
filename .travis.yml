@@ -8,6 +8,10 @@ before_install:
 
 script:
 - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_NAME" --password-stdin
+- docker pull mongo
+- docker run --name <YOUR-NAME> -p 27017:27017 -v /data/db:/data/db -d mongo:3.4 --auth
+- docker ps
+- docker exec -it root mongo admin
 - docker build -t ying98/godeye_backend .
 - docker push ying98/godeye_backend:latest
 - docker run -d -p 8080:8080 ying98/godeye_backend
